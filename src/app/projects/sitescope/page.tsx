@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeftIcon, ArrowUpRightIcon } from "@phosphor-icons/react/dist/ssr";
 import { SiteHeader } from "@/components/SiteHeader";
 import { siteScopeCaseStudyText } from "@/data/sitescope-case-study";
+
+type MediaEntry = {
+  label: string;
+  image?: string;
+  alt?: string;
+};
 
 export const metadata: Metadata = {
   title: "SiteScope Full Case Study | Darshan",
@@ -23,9 +30,9 @@ const sectionTitles = [
   "Design System",
   "Design Process",
   "Tools Used and What Each Does",
-  "The Full Process — From Idea to Live Product",
-  "Frontend Process — How It Was Built",
-  "Backend Process — How It Was Built",
+  "The Full Process - From Idea to Live Product",
+  "Frontend Process - How It Was Built",
+  "Backend Process - How It Was Built",
   "UX Rules Used",
   "Page-by-Page Breakdown",
   "UX Decisions Made",
@@ -83,12 +90,17 @@ const chapters = [
   "The Problem",
   "Market Research",
   "Design System",
-  "The Full Process — From Idea to Live Product",
-  "Frontend Process — How It Was Built",
+  "The Full Process - From Idea to Live Product",
+  "Frontend Process - How It Was Built",
   "UX Rules Used",
   "Final Designs",
   "What I'd Do Differently",
 ] as const satisfies readonly SectionTitle[];
+
+const tocLabels: Partial<Record<SectionTitle, string>> = {
+  "The Full Process - From Idea to Live Product": "The Full Process",
+  "Frontend Process - How It Was Built": "Frontend Build",
+};
 
 const rowSections = new Set<SectionTitle>([
   "Pain Points",
@@ -97,7 +109,7 @@ const rowSections = new Set<SectionTitle>([
   "Competitor Research",
   "Design System",
   "Tools Used and What Each Does",
-  "Backend Process — How It Was Built",
+  "Backend Process - How It Was Built",
   "UX Rules Used",
   "Page-by-Page Breakdown",
   "Outcomes",
@@ -113,7 +125,7 @@ const pointRanges = new Map<SectionTitle, readonly [number, number]>([
   ["Competitor Research", [1, 5]],
   ["Design System", [1, 5]],
   ["Tools Used and What Each Does", [0, 12]],
-  ["Backend Process — How It Was Built", [2, 7]],
+  ["Backend Process - How It Was Built", [2, 7]],
   ["UX Rules Used", [1, 7]],
   ["Page-by-Page Breakdown", [0, 5]],
   ["UX Decisions Made", [0, 4]],
@@ -125,20 +137,87 @@ const pointRanges = new Map<SectionTitle, readonly [number, number]>([
 
 const compactSections = new Set<SectionTitle>(["My Role", "Timeline"]);
 
-const mediaAfter = new Map<SectionTitle, string[]>([
-  ["The Problem", ["Problem evidence or current audit workflow"]],
-  ["Competitor Research", ["Competitive analysis or research board"]],
-  ["Design Process", ["Landing page and report page explorations"]],
-  ["The Full Process — From Idea to Live Product", ["Product process or build timeline"]],
-  ["Frontend Process — How It Was Built", ["Frontend screens or component architecture"]],
-  ["Backend Process — How It Was Built", ["Backend architecture or scan pipeline"]],
+const mediaAfter = new Map<SectionTitle, MediaEntry[]>([
+  [
+    "Design Process",
+    [
+      {
+        label: "SiteScope landing page in full",
+        image: "/images/case-studies/sitescope/landing-full.png",
+        alt: "SiteScope landing page, full scroll - hero, features, reports section, and CTA",
+      },
+    ],
+  ],
+  [
+    "The Full Process - From Idea to Live Product",
+    [
+      {
+        label: "SiteScope analysis section",
+        image: "/images/case-studies/sitescope/analysis.png",
+        alt: "SiteScope analysis section explaining what the tool measures",
+      },
+    ],
+  ],
+  [
+    "Frontend Process - How It Was Built",
+    [
+      {
+        label: "SiteScope features section",
+        image: "/images/case-studies/sitescope/features.png",
+        alt: "SiteScope features section - Catch issues before your users do",
+      },
+    ],
+  ],
   [
     "Final Designs",
-    ["Final landing page design", "Final audit report design", "Mobile product design"],
+    [
+      {
+        label: "Final landing page - desktop",
+        image: "/images/case-studies/sitescope/hero.png",
+        alt: "SiteScope final landing page hero on desktop",
+      },
+      {
+        label: "Reports section - desktop",
+        image: "/images/case-studies/sitescope/reports.png",
+        alt: "SiteScope reports section on desktop showing sample audit output",
+      },
+      {
+        label: "Mobile experience",
+        image: "/images/case-studies/sitescope/mobile-hero.png",
+        alt: "SiteScope landing page on mobile at 414 pixels wide",
+      },
+    ],
   ],
 ]);
 
-function MediaSlot({ label, square = false }: { label: string; square?: boolean }) {
+function MediaSlot({
+  label,
+  square = false,
+  image,
+  alt,
+}: {
+  label: string;
+  square?: boolean;
+  image?: string;
+  alt?: string;
+}) {
+  if (image) {
+    return (
+      <figure
+        className={`case-media-slot case-media-slot--filled${
+          square ? " case-media-slot--square" : ""
+        }`}
+      >
+        <Image
+          src={image}
+          alt={alt ?? label}
+          fill
+          sizes="(max-width: 760px) 100vw, 768px"
+        />
+      </figure>
+    );
+  }
+
   return (
     <div
       className={`case-media-slot${square ? " case-media-slot--square" : ""}`}
@@ -205,7 +284,7 @@ export default function SiteScopeCaseStudy() {
             <nav className="case-toc" aria-label="Case study chapters">
               {chapters.map((chapter) => (
                 <a href={`#${sectionId(chapter)}`} key={chapter}>
-                  {chapter}
+                  {tocLabels[chapter] ?? chapter}
                 </a>
               ))}
             </nav>
@@ -214,7 +293,7 @@ export default function SiteScopeCaseStudy() {
           <article className="case-study-article">
             <header className="case-hero">
               <div className="case-hero-heading">
-                <p className="case-project-label">{caseStudy.sourceLabel}</p>
+                <p className="case-project-label">SiteScope · Case Study · 2026</p>
                 <h1>{caseStudy.title}</h1>
                 <a
                   className="case-live-link"
@@ -228,7 +307,11 @@ export default function SiteScopeCaseStudy() {
                 </a>
               </div>
 
-              <MediaSlot label="Hero image or product video" />
+              <MediaSlot
+                label="SiteScope landing page"
+                image="/images/case-studies/sitescope/hero.png"
+                alt="SiteScope landing page hero - See your site as the world does"
+              />
             </header>
 
             <div className="case-study-sections">
@@ -238,7 +321,7 @@ export default function SiteScopeCaseStudy() {
                   "case-section",
                   rowSections.has(section.title) ? "case-section--rows" : "",
                   compactSections.has(section.title) ? "case-section--compact" : "",
-                  section.title === "The Full Process — From Idea to Live Product"
+                  section.title === "The Full Process - From Idea to Live Product"
                     ? "case-section--process"
                     : "",
                 ]
@@ -254,12 +337,24 @@ export default function SiteScopeCaseStudy() {
                     <h2>{section.title}</h2>
                     <SectionLines section={section} />
 
-                    {media.length === 1 ? <MediaSlot label={media[0]} /> : null}
+                    {media.length === 1 ? (
+                      <MediaSlot
+                        label={media[0].label}
+                        image={media[0].image}
+                        alt={media[0].alt}
+                      />
+                    ) : null}
 
                     {media.length > 1 ? (
                       <div className="case-media-grid">
-                        {media.map((label) => (
-                          <MediaSlot label={label} square key={label} />
+                        {media.map((entry) => (
+                          <MediaSlot
+                            label={entry.label}
+                            image={entry.image}
+                            alt={entry.alt}
+                            square
+                            key={entry.label}
+                          />
                         ))}
                       </div>
                     ) : null}

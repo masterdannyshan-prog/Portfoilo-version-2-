@@ -7,6 +7,8 @@ export function ProjectsSection() {
     <section id="work" className="projects-section" aria-labelledby="projects-title">
       <h2 id="projects-title" className="sr-only">Selected projects</h2>
 
+      <p className="section-label">Selected Work - 2024 / 2026</p>
+
       <div className="project-grid">
         {projects.map((project) => (
           <ProjectCard project={project} key={project.slug} />
@@ -41,9 +43,16 @@ export function ProjectCard({ project }: { project: Project }) {
 }
 
 function ProjectContent({ project }: { project: Project }) {
+  const mediaStyle = project.mediaBackground
+    ? { background: project.mediaBackground }
+    : undefined;
+  const imageStyle: React.CSSProperties = {};
+  if (project.objectFit) imageStyle.objectFit = project.objectFit;
+  if (project.objectPosition) imageStyle.objectPosition = project.objectPosition;
+
   return (
     <>
-      <div className="project-media">
+      <div className="project-media" style={mediaStyle}>
         <Image
           src={project.image}
           alt={project.imageAlt}
@@ -51,6 +60,7 @@ function ProjectContent({ project }: { project: Project }) {
           sizes="(max-width: 760px) 100vw, 50vw"
           priority={project.slug === "sitescope"}
           unoptimized={project.image.startsWith("https://")}
+          style={Object.keys(imageStyle).length > 0 ? imageStyle : undefined}
         />
         <CursorFillLabel showArrow={Boolean(project.href)}>
           {project.href ? "View project" : "Case study soon"}
@@ -61,7 +71,9 @@ function ProjectContent({ project }: { project: Project }) {
         <h3>{project.title}</h3>
         <p>
           <span>{project.category}</span>
-          <span aria-hidden="true">•</span>
+          <span aria-hidden="true">·</span>
+          <span>{project.status}</span>
+          <span aria-hidden="true">·</span>
           <span>{project.year}</span>
         </p>
       </div>

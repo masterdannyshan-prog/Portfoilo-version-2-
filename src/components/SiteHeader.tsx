@@ -16,7 +16,8 @@ export function SiteHeader() {
     <header className="site-header">
       <Link className="identity" href="/" aria-label="Darshan, home">
         <span className="identity-name">DARSHAN</span>
-        <span className="identity-role">UI/UX DESIGNER + BUILDER</span>
+        <span className="identity-sep" aria-hidden="true">/</span>
+        <span className="identity-role">DESIGNER + BUILDER</span>
       </Link>
 
       <nav className="desktop-nav" aria-label="Primary navigation">
@@ -25,11 +26,6 @@ export function SiteHeader() {
         <Link href="/#about">ABOUT</Link>
         <a href={resumeHref} target="_blank" rel="noopener noreferrer">RESUME</a>
       </nav>
-
-      <div className="availability" aria-label="Available for full-time design roles">
-        <span className="availability-mark" aria-hidden="true" />
-        <span>AVAILABLE</span>
-      </div>
 
       <button
         className="menu-button"

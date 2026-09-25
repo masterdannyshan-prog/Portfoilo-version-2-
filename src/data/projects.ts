@@ -12,6 +12,9 @@ export type Project = {
   layout: "lead" | "reverse";
   href?: string;
   linkLabel: string;
+  objectFit?: "cover" | "contain";
+  objectPosition?: string;
+  mediaBackground?: string;
 };
 
 export const projects: Project[] = [
@@ -36,7 +39,7 @@ export const projects: Project[] = [
     title: "Ghost Frame",
     headline: "Image effects for strange ideas",
     category: "Creative tool",
-    status: "Case study soon",
+    status: "Live",
     description:
       "An image-effects playground for creating eerie, distorted, and experimental visuals in the browser.",
     role: "Product design + build",
@@ -44,7 +47,8 @@ export const projects: Project[] = [
     image: "/images/projects/ghost-frame-cover.png",
     imageAlt: "Monochrome portrait with a multi-exposure ghost effect",
     layout: "reverse",
-    linkLabel: "Case study coming next",
+    href: "/projects/ghost-frame",
+    linkLabel: "View Ghost Frame case study",
   },
   {
     slug: "fluxor-ai",
@@ -90,6 +94,8 @@ export const projects: Project[] = [
     layout: "reverse",
     href: "https://www.behance.net/gallery/212745795/Vnroll-Virtual-Reality-E-learning-app",
     linkLabel: "View Vnroll on Behance",
+    objectFit: "contain",
+    mediaBackground: "#0f1215",
   },
   {
     slug: "pulse-fusion",

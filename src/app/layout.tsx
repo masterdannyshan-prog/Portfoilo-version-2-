@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import localFont from "next/font/local";
+import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const sans = Inter({
@@ -9,25 +8,24 @@ const sans = Inter({
   display: "swap",
 });
 
-const display = localFont({
-  variable: "--font-display",
+const mono = Geist_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
   display: "swap",
-  src: [
-    { path: "../../public/fonts/Satoshi-Regular.woff2", weight: "400", style: "normal" },
-    { path: "../../public/fonts/Satoshi-Medium.woff2", weight: "500", style: "normal" },
-    { path: "../../public/fonts/Satoshi-Bold.woff2", weight: "700", style: "normal" },
-  ],
 });
 
 export const metadata: Metadata = {
-  title: "Darshan | UI/UX Designer",
-  description: "Darshan is a UI/UX designer who turns ideas into working digital products.",
+  title: "Darshan | UI/UX Designer + Builder",
+  description: "Darshan designs products and ships them. UI/UX design and frontend work from Chennai.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${sans.variable} ${display.variable}`}>
+      <body
+        className={`${sans.variable} ${mono.variable}`}
+        suppressHydrationWarning
+      >
         {children}
       </body>
     </html>

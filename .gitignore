@@ -13,3 +13,9 @@ out/
 *.tsbuildinfo
 .DS_Store
 tmp/
+
+# Local Claude Code config
+.claude/
+
+# Ignore npm lock — this project uses pnpm
+package-lock.json
