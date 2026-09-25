@@ -69,13 +69,13 @@ button:focus-visible {
   width: max-content;
   font-family: var(--font-sans), sans-serif;
   font-size: 13px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
 }
 
 .identity-name {
   color: var(--ink-strong);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .identity-sep {
@@ -85,7 +85,7 @@ button:focus-visible {
 
 .identity-role {
   color: var(--muted);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .desktop-nav {
@@ -95,8 +95,8 @@ button:focus-visible {
   gap: clamp(28px, 2.8vw, 44px);
   font-family: var(--font-sans), sans-serif;
   font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -1382,7 +1382,7 @@ button:focus-visible {
     background: rgba(255, 255, 255, 0.98);
     font-family: var(--font-sans), sans-serif;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     text-align: center;
     opacity: 0;
     pointer-events: none;
