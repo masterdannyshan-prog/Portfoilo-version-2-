@@ -447,7 +447,7 @@ button:focus-visible {
 
 .about-center h2 {
   max-width: 28ch;
-  margin: 0 0 clamp(20px, 2.4vw, 32px);
+  margin: 0;
   color: var(--ink-strong);
   font-family: var(--font-sans), sans-serif;
   font-size: clamp(32px, 3.2vw, 52px);
@@ -480,7 +480,7 @@ button:focus-visible {
 }
 
 .about-edu {
-  margin-top: clamp(28px, 3.5vw, 48px);
+  margin-top: 28px;
 }
 
 .about-entry {
@@ -595,9 +595,9 @@ button:focus-visible {
 
 .about-copy {
   display: grid;
-  gap: 22px;
+  gap: 14px;
   max-width: 690px;
-  margin-top: clamp(48px, 5vw, 72px);
+  margin-top: 16px;
 }
 
 .about-copy p {
@@ -621,7 +621,7 @@ button:focus-visible {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
   max-width: 760px;
-  margin: clamp(56px, 6vw, 84px) 0 0;
+  margin: 20px 0 0;
   padding: 0;
 }
 
