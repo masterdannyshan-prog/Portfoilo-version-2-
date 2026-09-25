@@ -418,7 +418,7 @@ button:focus-visible {
 
 .about-section {
   scroll-margin-top: 24px;
-  padding: var(--section-space) var(--page-gutter) 0;
+  padding: var(--section-space) var(--page-gutter);
   background: var(--page);
 }
 
@@ -761,7 +761,7 @@ button:focus-visible {
 }
 
 .contact-section {
-  padding: 0 var(--page-gutter) 32px;
+  padding: var(--section-space) var(--page-gutter) 32px;
   background: var(--page);
 }
 
@@ -1541,7 +1541,7 @@ button:focus-visible {
   }
 
   .about-section {
-    padding: var(--section-space) var(--page-gutter) 0;
+    padding: var(--section-space) var(--page-gutter);
   }
 
   .about-combined {
