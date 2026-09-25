@@ -1,0 +1,15 @@
+node_modules/
+node_modules-corrupt/
+node_modules-partial*/
+.next/
+.playwright-cli/
+artifacts/
+AGENTS.md
+CLAUDE.md
+out/
+.env*
+!.env.example
+*.log
+*.tsbuildinfo
+.DS_Store
+tmp/
