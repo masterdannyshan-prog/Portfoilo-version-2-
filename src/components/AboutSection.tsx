@@ -3,11 +3,11 @@ import Image from "next/image";
 const tools = [
   { name: "Figma", icon: "figma" },
   { name: "Framer", icon: "framer" },
-  { name: "Photoshop", icon: "adobephotoshop" },
-  { name: "Illustrator", icon: "adobeillustrator" },
-  { name: "After Effects", icon: "adobeaftereffects" },
+  { name: "Photoshop", icon: "photoshop" },
+  { name: "Illustrator", icon: "illustrator" },
+  { name: "After Effects", icon: "aftereffects" },
   { name: "DaVinci Resolve", icon: "davinciresolve" },
-  { name: "Cursor", icon: "cursor" },
+  { name: "Webflow", icon: "webflow" },
   { name: "Claude AI", icon: "anthropic" },
 ];
 
